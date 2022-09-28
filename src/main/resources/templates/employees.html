@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <div th:replace="fragments/header :: header"  th:remove="tag"></div>
+</head>
+
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2> <b> Zarządzaj pracownikami </b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#addCostumer" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Dodaj nowego klienta</span></a>
+
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>PESEL</th>
+                    <th>Email</th>
+                    <th>Adres</th>
+                    <th>Telefon</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                <tr th:each="employee: ${employeeList}" >
+
+                    <td th:text="${employee.id}" > </td>
+                    <td th:text="${employee.name}" > </td>
+                    <td th:text="${employee.lastName}employee
+                    <td th:text="${employee.pesel}"></td>
+                    <td th:text="${employee.email}"></td>
+                    <td th:text="${employee.address}"></td>
+                    <td th:text="${employee.phoneNumber}"></td>
+
+                    <td>
+
+                        <a th:href="@{/employee/getOne/(id=${client.id})}"class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edytuj">&#xE254;</i></a>
+                        <a th:href="@{/employee/delete/{id}(id=${client.id})}" id="deleteButton" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div id="addCostumer" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form th:action="@{/employees/addNew}" th:object="${employee}" method="post" >
+                <div class="modal-header">
+                    <h4 class="modal-title">Dodaj nowego pracownika</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Imię</label>
+                        <input type="text" class="form-control" required th:field="*{name}">
+                    </div>
+                    <div class="form-group">
+                        <label>Nazwisko</label>
+                        <input type="text" class="form-control" required th:field="*{lastName}">
+                    </div>
+                    <div class="form-group">
+                        <label>Pesel</label>
+                        <input type="text" class="form-control" maxlength="11" required th:field="*{pesel}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" required th:field="*{email}">
+                    </div>
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <textarea class="form-control" required th:field="*{address}" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="text" class="form-control" required th:field="*{phoneNumber}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">
+                    <input type="submit" class="btn btn-success" value="Dodaj">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit Modal HTML -->
+<div id="editClient" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+
+            <form th:action="@{/clients/edit}"  method="put" th:object="${client}">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Edydcja  danych klienta</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input id="editId" readonly type="text" class="form-control" required th:field="*{id}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Imię</label>
+                        <input id="editName" type="text" class="form-control" required th:field="*{name}" >
+                    </div>
+                    <div class="form-group">
+                        <label>Nazwisko</label>
+                        <input  id="editLastName" type="text" class="form-control" required  th:field="*{lastName}">
+                    </div>
+                    <div class="form-group">
+                        <label>PESEL</label>
+                        <input  id="editPesel" type="text" class="form-control" required  th:field="*{pesel}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input  id="editEmail" type="email" class="form-control" required th:field="*{email}">
+                    </div>
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <textarea id="editAddress" class="form-control" required th:field="*{address}" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label> Telefon</label>
+                        <input id="editPhone" type="text" class="form-control" th:field="*{phoneNumber}" required >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">
+                    <input type="submit" class="btn btn-info" value="Zapisz">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deleteCostumer" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+            <form action="" method="delete" id="deleteForm" >
+                <div class="modal-header">
+                    <h4 class="modal-title">Usuń Klienta</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Jesteś pewien że chcesz usuńąć ten wpis?</p>
+                    <p class="text-warning"><small>Ta akcja jest nieodwracalna.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">
+                    <input type="submit" class="btn btn-danger" value=Usuń   >
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/employee.js" th:src="@{/employee.js}"></script>
+
+</body>
+</html>

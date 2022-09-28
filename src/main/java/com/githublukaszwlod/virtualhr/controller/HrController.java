@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("VirtualHr")
+@RequestMapping("virtualHr")
 public class HrController {
 
-    @GetMapping("hr")
+    @GetMapping("getHr")
     public String getHr(){
         return "hr";
     }

@@ -45,7 +45,7 @@
 
                     <td th:text="${employee.id}" > </td>
                     <td th:text="${employee.name}" > </td>
-                    <td th:text="${employee.lastName}employee
+                    <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.pesel}"></td>
                     <td th:text="${employee.email}"></td>
                     <td th:text="${employee.address}"></td>
@@ -112,80 +112,80 @@
     </div>
 </div>
 <!-- Edit Modal HTML -->
-<div id="editClient" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<!--<div id="editClient" class="modal fade">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
 
 
 
-            <form th:action="@{/clients/edit}"  method="put" th:object="${client}">
+<!--            <form th:action="@{/clients/edit}"  method="put" th:object="${client}">-->
 
-                <div class="modal-header">
-                    <h4 class="modal-title">Edydcja  danych klienta</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Id</label>
-                        <input id="editId" readonly type="text" class="form-control" required th:field="*{id}">
-                    </div>
+<!--                <div class="modal-header">-->
+<!--                    <h4 class="modal-title">Edydcja  danych klienta</h4>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Id</label>-->
+<!--                        <input id="editId" readonly type="text" class="form-control" required th:field="*{id}">-->
+<!--                    </div>-->
 
-                    <div class="form-group">
-                        <label>Imię</label>
-                        <input id="editName" type="text" class="form-control" required th:field="*{name}" >
-                    </div>
-                    <div class="form-group">
-                        <label>Nazwisko</label>
-                        <input  id="editLastName" type="text" class="form-control" required  th:field="*{lastName}">
-                    </div>
-                    <div class="form-group">
-                        <label>PESEL</label>
-                        <input  id="editPesel" type="text" class="form-control" required  th:field="*{pesel}">
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input  id="editEmail" type="email" class="form-control" required th:field="*{email}">
-                    </div>
-                    <div class="form-group">
-                        <label>Adres</label>
-                        <textarea id="editAddress" class="form-control" required th:field="*{address}" ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label> Telefon</label>
-                        <input id="editPhone" type="text" class="form-control" th:field="*{phoneNumber}" required >
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">
-                    <input type="submit" class="btn btn-info" value="Zapisz">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<!--                    <div class="form-group">-->
+<!--                        <label>Imię</label>-->
+<!--                        <input id="editName" type="text" class="form-control" required th:field="*{name}" >-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Nazwisko</label>-->
+<!--                        <input  id="editLastName" type="text" class="form-control" required  th:field="*{lastName}">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>PESEL</label>-->
+<!--                        <input  id="editPesel" type="text" class="form-control" required  th:field="*{pesel}">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Email</label>-->
+<!--                        <input  id="editEmail" type="email" class="form-control" required th:field="*{email}">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Adres</label>-->
+<!--                        <textarea id="editAddress" class="form-control" required th:field="*{address}" ></textarea>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label> Telefon</label>-->
+<!--                        <input id="editPhone" type="text" class="form-control" th:field="*{phoneNumber}" required >-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">-->
+<!--                    <input type="submit" class="btn btn-info" value="Zapisz">-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<div id="deleteCostumer" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<!--<div id="deleteCostumer" class="modal fade">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
 
 
-            <form action="" method="delete" id="deleteForm" >
-                <div class="modal-header">
-                    <h4 class="modal-title">Usuń Klienta</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Jesteś pewien że chcesz usuńąć ten wpis?</p>
-                    <p class="text-warning"><small>Ta akcja jest nieodwracalna.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">
-                    <input type="submit" class="btn btn-danger" value=Usuń   >
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<!--            <form action="" method="delete" id="deleteForm" >-->
+<!--                <div class="modal-header">-->
+<!--                    <h4 class="modal-title">Usuń Klienta</h4>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <p>Jesteś pewien że chcesz usuńąć ten wpis?</p>-->
+<!--                    <p class="text-warning"><small>Ta akcja jest nieodwracalna.</small></p>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">-->
+<!--                    <input type="submit" class="btn btn-danger" value=Usuń   >-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <script type="text/javascript" src="../static/employee.js" th:src="@{/employee.js}"></script>
 
 </body>

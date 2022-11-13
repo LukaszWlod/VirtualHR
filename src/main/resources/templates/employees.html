@@ -20,7 +20,7 @@
                         <h2> <b> Zarządzaj pracownikami </b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addCostumer" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Dodaj nowego klienta</span></a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployee">Dodaj</button>
 
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 <tbody>
 
 
-                <tr th:each="employee: ${employeeList}" >
+                <tr th:each="employee: ${employeesList}" >
 
                     <td th:text="${employee.id}" > </td>
                     <td th:text="${employee.name}" > </td>
@@ -53,8 +53,8 @@
 
                     <td>
 
-                        <a th:href="@{/employee/getOne/(id=${client.id})}"class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edytuj">&#xE254;</i></a>
-                        <a th:href="@{/employee/delete/{id}(id=${client.id})}" id="deleteButton" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a th:href="@{/employee/getOne/(id=${employee.id})}"class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edytuj">&#xE254;</i></a>
+                        <a th:href="@{/employee/delete/{id}(id=${employee.id})}" id="deleteButton" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
 
 
@@ -68,14 +68,14 @@
     </div>
 </div>
 
-<div id="addCostumer" class="modal fade">
+<div id="addEmployee" class="modal fade" role="dialog" >
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <form th:action="@{/employees/addNew}" th:object="${employee}" method="post" >
+            <form th:action="@{/employees}" th:object="${employee}" method="post" >
                 <div class="modal-header">
                     <h4 class="modal-title">Dodaj nowego pracownika</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Anuluj">
+                    <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Anuluj">
                     <input type="submit" class="btn btn-success" value="Dodaj">
                 </div>
             </form>
@@ -186,7 +186,10 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-<script type="text/javascript" src="../static/employee.js" th:src="@{/employee.js}"></script>
+<!--<script type="text/javascript" src="../static/employee.js" th:src="@{/employee.js}"></script>-->
+
+
+
 
 </body>
 </html>

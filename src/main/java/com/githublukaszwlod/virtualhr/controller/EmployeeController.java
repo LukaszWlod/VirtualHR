@@ -48,9 +48,13 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
-    public String editEmployee(@ModelAttribute("employee") Employee employee){
-
+    @RequestMapping(value="/edit",method = {RequestMethod.PUT,RequestMethod.GET})
+    public String editEntry(@ModelAttribute Employee employee){
+        employeeService.update(employee);
+        return "redirect:/employees";
     }
+
+
 
 
 

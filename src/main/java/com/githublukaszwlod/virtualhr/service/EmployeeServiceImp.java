@@ -37,6 +37,10 @@ public class EmployeeServiceImp implements  EmployeeService{
         employeeRepository.save(employee);
     }
 
+    @Override
+    public Employee getOne(Long id) {
+        return employeeRepository.findById(id).orElseThrow(()-> new RuntimeException("Element doesn't exist"));
+    }
 
 
 }

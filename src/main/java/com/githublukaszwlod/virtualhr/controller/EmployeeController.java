@@ -55,6 +55,13 @@ public class EmployeeController {
     }
 
 
+    @GetMapping("/employee")
+    public @ResponseBody Employee getOne(Long id) {
+        System.out.println("get one id = "+ id);
+
+        return employeeService.getOne(id);
+    }
+
 
 
 

@@ -19,8 +19,18 @@ $('document').ready(function () {
 
          });
 
-
-
          $('#editEmployee').modal('show');
     });
+
+
+    //show delete modal after click
+    $('.table #deleteButton').on('click',function (event) {
+        event.preventDefault();
+        var href = $(this).attr('href');
+
+
+        $('#deleteForm').attr('action', href);
+        $('#deleteEmployee').modal('show');
+    });
+
 })

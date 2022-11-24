@@ -64,7 +64,7 @@ public class EmployeeController {
     public String delete(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
         System.out.println("usuwanie " + id);
-        return "redirect:/clients/showAll";
+        return "redirect:/employees";
     }
 
 

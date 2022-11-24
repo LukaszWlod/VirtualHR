@@ -57,10 +57,16 @@ public class EmployeeController {
 
     @GetMapping("/employee")
     public @ResponseBody Employee getOne(Long id) {
-        System.out.println("get one id = "+ id);
-
         return employeeService.getOne(id);
     }
+
+    @RequestMapping(value="/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String delete(@PathVariable("id") Long id) {
+        employeeService.deleteEmployeeById(id);
+        System.out.println("usuwanie " + id);
+        return "redirect:/clients/showAll";
+    }
+
 
 
 

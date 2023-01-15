@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <div th:replace="fragments/header :: header"  th:remove="tag"></div>
+    <link rel="stylesheet" href="/main.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+
+
+
+
+
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a
+                            href="#"
+                            class="list-group-item list-group-item-action py-2 ripple"
+                            aria-current="true"
+                    >
+                        <i class="bi bi-house-fill me-3"></i><span>Strona domowa</span>
+                    </a>
+
+
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                        <i class="bi bi-cash me-3"></i><span>Dane finansowe</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                    ><i class="bi bi-postcard fa-fw me-3"></i><span>Urlopy</span></a
+                    >
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                    ><i class="bi bi-calendar-event me-3"></i><span>Czas pracy</span></a
+                    >
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="bi bi-card-text me-3"></i><span>Wnioski</span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                    ><i class="bi bi-clipboard2-data me-3"></i><span>Dane personalne</span></a
+                    >
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                    ><i class="bi bi-file-text me-3"></i><span>Umowy</span></a
+                    >
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                    ><i class="bi bi-calendar2 me-3"></i><span>Kalendarz</span></a
+                    >
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"
+                    ><i class="bi bi-gear me-3"></i><span>Ustawienia</span></a
+                    >
+
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#sidebarMenu"
+                        aria-controls="sidebarMenu"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="/images/work-2317806_640.png" alt="logo" height="52">
+
+                </a>
+                <!-- Search form -->
+                <form class="d-none d-md-flex input-group w-auto my-auto">
+                    <input
+                            autocomplete="off"
+                            type="search"
+                            class="form-control rounded"
+                            placeholder='Szukaj'
+                            style="min-width: 225px;"
+                    />
+                    <span class="input-group-text border-0"><i class="bi bi-search"></i></span>
+                </form>
+
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <!-- Notification dropdown -->
+                    <li class="nav-item dropdown">
+                        <a
+                                class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
+                                href="#"
+                                id="navbarDropdownMenuLin"
+                                role="button"
+                                data-bs-toggle='dropdown'
+                                aria-expanded="false"
+                        >
+                            <i class="bi bi-chat-right-text"></i>
+                            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                        </a>
+                        <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="navbarDropdownMenuLink"
+                        >
+                            <li>
+                                <a class="dropdown-item" href="#">Nowe wiadości</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Utwórz wiadomość</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Archiwum wiadomości</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <!-- Icon dropdown -->
+                    <li class="nav-item dropdown">
+                        <a
+                                class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle='dropdown'
+                                aria-expanded="false"
+                        >
+                            <i class="bi bi-translate m-0"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">Polski
+                                    <i class="fa fa-check text-success ms-2"></i
+                                    ></a>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <a class="dropdown-item" href="#">English</a>
+                            </li>
+
+                                <a class="dropdown-item" href="#">Deutsch</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- Avatar -->
+                    <li class="nav-item dropdown">
+                        <a
+                                class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+                                href="#"
+                                id="navbarDropdownMenuLink"
+                                role="button"
+                                data-bs-toggle='dropdown'
+                                aria-expanded="false"
+                        >
+                            <img
+                                    src="/images/blank-profile-picture-973460_640.png"
+                                    class="rounded-circle"
+                                    height="28"
+                                    alt="Avatar"
+                                    loading="lazy"
+                            />
+                        </a>
+                        <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="navbarDropdownMenuLink"
+                        >
+                            <li>
+                                <a class="dropdown-item" href="#">Mój profil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Ustawienia</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Wyloguj</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main style="margin: 88px;">
+        <div class="grey-bg container-fluid">
+                <div class="row">
+                    <div class="col-12 mt-3 mb-1">
+                        <h4 class="text-uppercase" id="test">Twoje kadry</h4>
+                        <p>Wszytkie twoje dane</p>
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                    <div class="col">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-icons ">campaign</span>
+                                    <h5 class="card-title">Ogłoszenia</h5>
+                                    <a href="#" class="stretched-link"></a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-icons ">campaign</span>
+                                    <h5 class="card-title">Ogłoszenia</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-icons ">campaign</span>
+                                    <h5 class="card-title">Ogłoszenia</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-icons ">campaign</span>
+                                    <h5 class="card-title">Ogłoszenia</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+        </div>
+
+
+    </main>
+    <!--Main layout-->
+
+
+
+</body>
+</html>

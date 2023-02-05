@@ -23,9 +23,7 @@ import java.util.List;
 public class EmployeeController {
     private EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+
 
     @GetMapping
     public String getEmployees(Model model){

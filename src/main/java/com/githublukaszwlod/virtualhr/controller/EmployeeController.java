@@ -3,6 +3,7 @@ package com.githublukaszwlod.virtualhr.controller;
 import com.githublukaszwlod.virtualhr.model.Employee;
 import com.githublukaszwlod.virtualhr.service.EmployeeService;
 import com.githublukaszwlod.virtualhr.service.PdfGenerator;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/employees")
+@AllArgsConstructor
 
 public class EmployeeController {
     private EmployeeService employeeService;
@@ -86,6 +88,8 @@ public class EmployeeController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(new InputStreamResource(bis));
     }
+
+
 
 
 

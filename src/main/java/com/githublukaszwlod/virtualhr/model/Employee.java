@@ -1,15 +1,17 @@
 package com.githublukaszwlod.virtualhr.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 
-    @Entity
+@Entity
     @Getter
     @Setter
     @NoArgsConstructor
@@ -23,7 +25,11 @@ import javax.persistence.Id;
         private String lastName;
         private String pesel;
         private String email;
-        private String address;
+        private String street;
+        private int houseNumber;
+        private String zipCode;
+        //@DateTimeFormat(pattern = "dd-MM-yyyy")
+        private LocalDate dateOfBirth;
         private int phoneNumber;
 
     }

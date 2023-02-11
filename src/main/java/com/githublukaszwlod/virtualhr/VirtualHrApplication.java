@@ -31,8 +31,10 @@ public class VirtualHrApplication {
             employeeService.safeEmployee(new Employee(
                     1l, "Jan", "Kowalski", "99001102031",
                     "jan@wp.pl", "Kwiatowa", 1,
-                    "22-222",LocalDate.of(2020, 1, 8), 777666111
+                    "22-222",LocalDate.of(2020, 1, 8), 777666111,
+                    "Lublin"
             ));
+
         };
 
 

@@ -28,9 +28,10 @@ import java.time.LocalDate;
         private String street;
         private int houseNumber;
         private String zipCode;
-        //@DateTimeFormat(pattern = "dd-MM-yyyy")
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         private LocalDate dateOfBirth;
         private int phoneNumber;
+        private String city;
 
     }
 

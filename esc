@@ -1,0 +1,77 @@
+[33mcommit aca5e40fe5cfcce00d5a2378f19cabaf8176b036[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Thu Feb 9 18:39:45 2023 +0100
+
+    Enhance User model with multiple fields
+
+[33mcommit 766e18074025d8713781b141807dad1571d0d03c[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Wed Feb 8 18:25:32 2023 +0100
+
+    Add user data view
+
+[33mcommit 1b155aa994efd06c9e22b63e73de1964aac9aa21[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Sun Feb 5 11:22:25 2023 +0100
+
+    Move the main navigation to a separate file
+
+[33mcommit e8c966c84fa5b36fabe0eab65bb099d7c78c3455[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Sun Jan 15 17:22:48 2023 +0100
+
+    Create view for employee side
+
+[33mcommit d8f1be82556504220bd54f662ad4aad68b05ea1a[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Thu Nov 24 13:06:19 2022 +0100
+
+    Implement delete employee feature in front-end side
+
+[33mcommit a10199d3bb5b187c71ee4af07724f2dbbbe81f4e[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Thu Nov 24 05:30:10 2022 +0100
+
+    Add delete method to EmployeeControler
+
+[33mcommit 68e5d7c26c3bb14e696cdb9b10dcb801039a81e5[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Thu Nov 24 04:02:45 2022 +0100
+
+    Implement update feature in front-end side
+
+[33mcommit c5f0ff810af20a1af3644e34ae349128403c4062[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Tue Nov 22 13:55:44 2022 +0100
+
+    Add update method to controller
+
+[33mcommit 430fc1e467216587e0bc855ddbfc16da9ee8485d[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Sun Nov 13 18:02:26 2022 +0100
+
+    Create pdf Generator and rename endpoints
+
+[33mcommit 74e90fb84a9dc844283a6971c37c3e33a73a11a8[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Sat Oct 29 10:25:26 2022 +0200
+
+    Add getEmployees method to EmployeeController class
+
+[33mcommit 05b57b7f56cbd5dc0a452ee6576d8b482045e4be[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Wed Sep 28 10:59:08 2022 +0200
+
+    Build a service with crud methods for EmployeeRepository repository
+
+[33mcommit 7c3470237d38b32907b465142c7467f26b8a3cb5[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Sat Sep 3 17:46:39 2022 +0200
+
+    Build basic structure of application
+
+[33mcommit f0d7dcfa856d2e3606214d909d26cd595894304c[m
+Author: LukaszWlod <lukasz1023@gmail.com>
+Date:   Sun Aug 28 10:32:06 2022 +0200
+
+    Initial commit

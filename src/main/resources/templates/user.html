@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+
+
+
+
+
+
 </head>
 <body>
 <!--menu-->
@@ -24,7 +30,8 @@
         </div>
 
 
-            <form th:action="@{/generate-pdf}" th:object="${user}">
+
+            <form th:object="${user}"  th:action="@{/employees/{id}/pdf(id=${user.id})}"  method="get">
 
                 <div class="d-flex mb-3">
                     <div class="form-group w-25 me-5">
@@ -88,7 +95,7 @@
                 </div>
 
 
-                <button type="button" class="btn btn-primary" id="generatePdfBtn">Generuj PDF</button>
+                <button type="submit" class="btn btn-primary" id="generatePdfBtn"   >Generuj PDF</button>
             </form>
 
 

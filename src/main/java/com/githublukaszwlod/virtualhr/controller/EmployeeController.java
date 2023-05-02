@@ -33,10 +33,7 @@ public class EmployeeController {
         List<Employee> employeesList = employeeService.getEmployees();
         model.addAttribute("employeesList",employeesList);
 
-        for (var employee: employeesList
-             ) {
-            System.out.println("Odczyt z bazy: "+(employee.toString()));
-        }
+
         return "employees";
     }
 

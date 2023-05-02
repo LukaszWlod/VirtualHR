@@ -2,6 +2,7 @@ package com.githublukaszwlod.virtualhr.service;
 
 import com.githublukaszwlod.virtualhr.model.Employee;
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -28,6 +29,8 @@ public class PdfServiceImp  implements PdfService{
         document.add(heading);
         document.add(Chunk.NEWLINE);
 
+
+
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(100);
         table.setWidths(new float[]{2, 5});
@@ -47,12 +50,15 @@ public class PdfServiceImp  implements PdfService{
     }
 
     private void addCell(PdfPTable table, String label, String value) {
-        PdfPCell labelCell = new PdfPCell(new Phrase(label));
+
+        Font cellFont = FontFactory.getFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.EMBEDDED, 12);
+
+        PdfPCell labelCell = new PdfPCell(new Phrase(label,cellFont));
         labelCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         labelCell.setBorder(Rectangle.NO_BORDER);
         table.addCell(labelCell);
 
-        PdfPCell valueCell = new PdfPCell(new Phrase(value));
+        PdfPCell valueCell = new PdfPCell(new Phrase(value,cellFont));
         valueCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         valueCell.setBorder(Rectangle.NO_BORDER);
         table.addCell(valueCell);

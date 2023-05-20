@@ -9,12 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-
-
-
-
-
-
 </head>
 <body>
 <!--menu-->
@@ -24,14 +18,14 @@
     <div class="grey-bg  container-fluid  justify-content-center">
         <div class="row ">
             <div class="col-12 mt-3 mb-1">
-                <h4 class="text-uppercase" id="test">Twoje Dane</h4>
+                <h4 class="text-uppercase" id="test">Dane Personalne </h4>
                 <p>Wszytkie twoje dane</p>
             </div>
         </div>
 
 
 
-            <form th:object="${user}"  th:action="@{/employees/{id}/pdf(id=${user.id})}"  method="get">
+            <form th:object="${user}"  th:action="@{/personalData/{id}/pdf(id=${user.id})}"  method="get">
 
                 <div class="d-flex mb-3">
                     <div class="form-group w-25 me-5">
@@ -101,9 +95,6 @@
 
 
         </div>
-
-
-
 
 
 </main>

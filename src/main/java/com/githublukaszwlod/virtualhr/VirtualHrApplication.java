@@ -4,6 +4,7 @@ import com.githublukaszwlod.virtualhr.model.Employee;
 import com.githublukaszwlod.virtualhr.model.Salary;
 import com.githublukaszwlod.virtualhr.service.EmployeeService;
 import com.githublukaszwlod.virtualhr.service.EmployeeServiceImp;
+import com.githublukaszwlod.virtualhr.service.SalaryServiceImp;
 import lombok.NoArgsConstructor;
 import org.hibernate.loader.collection.OneToManyJoinWalker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class VirtualHrApplication {
 
 
     @Bean
-    public CommandLineRunner demo(EmployeeServiceImp employeeService) {
+    public CommandLineRunner demo(EmployeeServiceImp employeeService, SalaryServiceImp salaryService) {
         return (args) -> {
             employeeService.safeEmployee(new Employee(
                     1l, "Jan", "Kowalski", "99001102031",
@@ -40,6 +41,10 @@ public class VirtualHrApplication {
                     "22-222",LocalDate.of(2020, 1, 8), 777666111,
                     "Lublin",new ArrayList<Salary>()
             ));
+
+            salaryService.safeSalary(new Salary(1l,employeeService.getOne(1l), "2023-05", 160.0, 4000.0, 200.0, 100.0, 5000.0,
+                    4000.0, 20, 5, 2000.0, LocalDate.of(2021, 1, 8)));
+
 
         };
 

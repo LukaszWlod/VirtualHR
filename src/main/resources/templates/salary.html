@@ -1,0 +1,79 @@
+
+
+
+
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:th="http://www.thymeleaf.org"
+              lang="en">
+        <head>
+            <div th:replace="fragments/header :: header"  th:remove="tag"></div>
+
+
+
+        </head>
+        <body>
+        <!--menu-->
+        <div th:replace="fragments/menu :: menu"></div>
+        <!--Main layout-->
+        <main style="margin: 88px;">
+            <div class="grey-bg  container  justify-content-center">
+                <div class="row ">
+                    <div class="col-12 mt-3 mb-1">
+                        <h4 class="text-uppercase" >Wszystkie wypłaty </h4>
+                    </div>
+                </div>
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Okres rozliczeniowy</th>
+                        <th>Godziny przepracowane</th>
+                        <th>Wynagrodzenie brutto</th>
+                        <th>Wynagrodzenie netto</th>
+                        <th>Szczegółowy dokument</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="salary : ${salaries}">
+                        <td th:text="${salary.payrollPeriod}"></td>
+                        <td th:text="${salary.workedHours}"></td>
+                        <td th:text="${salary.grossSalary}"></td>
+                        <td th:text="${salary.netSalary}"></td>
+                        <td>
+                            <a th:href="@{/details/{id}(id=${salary.id})}" class="btn btn-primary">Szczegóły</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+
+
+        </main>
+        <!--Main layout-->
+
+
+
+        </body>
+        </html>
+
+            <button type="submit" class="btn btn-primary" id="generatePdfBtn"   >Generuj PDF</button>
+        </form>
+
+
+
+    </div>
+
+
+</main>
+<!--Main layout-->
+
+
+
+</body>
+</html>

@@ -20,7 +20,7 @@ public class SalaryServiceImp implements  SalaryService {
     }
 
     @Override
-    public List<Salary> getSalary(Long employeeId) {
+    public List<Salary> getAllSalariesByEmployeeId(Long employeeId) {
         return salaryRepository.findByEmployeeId(employeeId);
     }
 

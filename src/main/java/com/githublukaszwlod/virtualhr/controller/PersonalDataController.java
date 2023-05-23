@@ -32,7 +32,7 @@ public class PersonalDataController {
         Employee employee = employeeService.getOne(id);
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + employee.getName() + ".pdf\"");
-        pdfService.generatePdf(employee, response.getOutputStream());
+        pdfService.generatePersonalDataPdf(employee, response.getOutputStream());
     }
 
 

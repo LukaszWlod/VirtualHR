@@ -24,15 +24,18 @@ public class Salary {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
     private String payrollPeriod;
-    private Double workedHours;
-    private Double pensionablePay;
-    private Double disabilityInsurance;
-    private Double sicknessInsurance;
-    private Double grossSalary;
-    private Double netSalary;
+    private double workedHours;
+    private double pensionablePay;
+    private double disabilityInsurance;
+    private double sicknessInsurance;
+    private double grossSalary;
+    private double netSalary;
     private int vacationDays;
     private int sickLeaveDays;
-    private Double sickLeavePay;
+    private double sickLeavePay;
+    private  double tax;
+    double vacationPayment;
+    double overtimeHours;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate paymentDate;

@@ -42,10 +42,14 @@ public class VirtualHrApplication {
                     "Lublin",new ArrayList<Salary>()
             ));
 
-            salaryService.safeSalary(new Salary(1l,employeeService.getOne(1l), "2023-05", 160.0, 4000.0, 200.0, 100.0, 5000.0,
-                    4000.0, 20, 5, 2000.0, LocalDate.of(2021, 1, 8)));
+            salaryService.safeSalary(new Salary(1l,employeeService.getOne(1l), "2023-01", 160.0, 300.0, 200.0, 100.0, 5000.0,
+                    4000.0, 2, 2, 200.0,300,800 ,8,LocalDate.of(2022, 2, 10)));
 
+            salaryService.safeSalary(new Salary(2l,employeeService.getOne(1l), "2023-02", 160.0, 300.0, 200.0, 100.0, 6300.0,
+                    4500.0, 2, 2, 200.0,300,800 ,8,LocalDate.of(2022, 2, 10)));
 
+            salaryService.safeSalary(new Salary(3l,employeeService.getOne(1l), "2023-03", 160.0, 300.0, 200.0, 100.0, 6000.0,
+                    4200.0, 2, 2, 200.0,300,800 ,8,LocalDate.of(2022, 2, 10)));
         };
 
 

@@ -42,7 +42,7 @@
                         <td th:text="${salary.grossSalary}"></td>
                         <td th:text="${salary.netSalary}"></td>
                         <td>
-                            <a th:href="@{/details/{id}(id=${salary.id})}" class="btn btn-primary">Szczegóły</a>
+                            <a th:href="@{/salary/pdf/{id}(id=${salary.id})}" class="btn btn-primary">Szczegóły</a>
                         </td>
                     </tr>
                     </tbody>

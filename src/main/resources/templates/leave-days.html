@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <div th:replace="fragments/header :: header"  th:remove="tag"></div>
+
+
+
+</head>
+<body>
+<!--menu-->
+<div th:replace="fragments/menu :: menu"></div>
+<!--Main layout-->
+<main style="margin: 88px;">
+
+
+    <div class="container">
+        <h2 class="text-center mb-4">Dostępne urlopy</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4" style="background-color: #f5f5f5;">
+                    <div class="card-body">
+                        <h5 class="card-title">Urlop wypoczynkowy</h5>
+                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.annualLeaveDays}"></span></p>
+                        <a href="#" class="btn btn-warning">Dodaj wniosek o urlop wypoczynkowy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4" style="background-color: #f5f5f5;">
+                    <div class="card-body">
+                        <h5 class="card-title">Urlop na żądanie</h5>
+                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.requestedLeaveDays}"></span></p>
+                        <a href="#" class="btn btn-success">Dodaj wniosek o urlop na żądanie</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4" style="background-color: #f5f5f5;">
+                    <div class="card-body">
+                        <h5 class="card-title">Urlop okolicznościowy</h5>
+                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.occasionalLeaveDays}"></span></p>
+                        <a href="#" class="btn btn-primary">Dodaj wniosek o urlop okolicznościowy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4" style="background-color: #f5f5f5;">
+                    <div class="card-body">
+                        <h5 class="card-title">Urlop rodzicielski</h5>
+                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.parentalLeaveDays}"></span></p>
+                        <a href="#" class="btn btn-danger">Dodaj wniosek o urlop rodzicielski</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</main>
+<!--Main layout-->
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+<

@@ -30,8 +30,12 @@ import java.util.List;
         private LocalDate dateOfBirth;
         private int phoneNumber;
         private String city;
+
         @OneToMany(mappedBy = "employee")
         private List<Salary> salaries;
+
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    private LeaveDays employeeLeaveDays;
 
     }
 

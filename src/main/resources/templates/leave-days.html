@@ -4,7 +4,9 @@
       lang="en">
 <head>
     <div th:replace="fragments/header :: header"  th:remove="tag"></div>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pl.min.js"></script>
 
 
 </head>
@@ -22,8 +24,8 @@
                 <div class="card mb-4" style="background-color: #f5f5f5;">
                     <div class="card-body">
                         <h5 class="card-title">Urlop wypoczynkowy</h5>
-                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.annualLeaveDays}"></span></p>
-                        <a href="#" class="btn btn-warning">Dodaj wniosek o urlop wypoczynkowy</a>
+                        <p class="card-text">Ilość dni do wykorzystania: <span id="availableDays" style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.annualLeaveDays}"></span></p>
+                        <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addLeaveModal">Dodaj wniosek o urlop wypoczynkowy</a>
                     </div>
                 </div>
             </div>
@@ -31,8 +33,8 @@
                 <div class="card mb-4" style="background-color: #f5f5f5;">
                     <div class="card-body">
                         <h5 class="card-title">Urlop na żądanie</h5>
-                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.requestedLeaveDays}"></span></p>
-                        <a href="#" class="btn btn-success">Dodaj wniosek o urlop na żądanie</a>
+                        <p class="card-text">Ilość dni do wykorzystania: <span id="availableRequestDays" style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.requestedLeaveDays}"></span></p>
+                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#requestLeaveModal">Zgłoś urlop na żądanie</a>
                     </div>
                 </div>
             </div>
@@ -41,16 +43,112 @@
                     <div class="card-body">
                         <h5 class="card-title">Urlop okolicznościowy</h5>
                         <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.occasionalLeaveDays}"></span></p>
-                        <a href="#" class="btn btn-primary">Dodaj wniosek o urlop okolicznościowy</a>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#occasionalLeaveModal">Dodaj wniosek o urlop okolicznościowy</a>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="card mb-4" style="background-color: #f5f5f5;">
                     <div class="card-body">
                         <h5 class="card-title">Urlop rodzicielski</h5>
                         <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.parentalLeaveDays}"></span></p>
-                        <a href="#" class="btn btn-danger">Dodaj wniosek o urlop rodzicielski</a>
+                        <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#parentalLeaveModal">Zgłoś urlop rodzicielski</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LeaveModal  -->
+    <div class="modal fade" id="addLeaveModal" tabindex="-1" role="dialog" aria-labelledby="addLeaveModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addLeaveModalLabel">Dodaj urlop wypoczynkowy</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="leaveModalBody">
+                    <div class="form-group">
+                        <label for="dateIN">Data początku urlopu</label>
+                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker" data-target="#datetimepicker1"
+                                   id="dateIn" placeholder="Początek urlopu" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateOut">Data końca urlopu</label>
+                        <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker" data-target="#datetimepicker1"
+                                   id="dateOut" placeholder="Koniec urlopu" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="leaveDays">Ilość dni urlopu</label>
+                        <input type="text" class="form-control" id="leaveDays" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="leaveDays">Osoba zatwierdzająca urlop</label>
+                        <input type="text" class="form-control" id="person"
+                               value="Tomasz Nowak (Kierownik działu produkcji)" readonly />
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Anuluj">
+                        <input type="submit" class="btn btn-info" id="submitLeave" value="Wyślij">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RequestLeaveModal  -->
+    <div class="modal fade" id="requestLeaveModal" tabindex="-1" role="dialog" aria-labelledby="requestLeaveModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestLeaveModalLabel">Zgłoś urlop na żądanie</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="requestLeaveModalBody">
+                    <div class="form-group">
+                        <label for="requestDateIn">Data rozpoczęcia urlopu</label>
+                        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker" data-target="#datetimepicker2"
+                                   id="requestDateIn" placeholder="Początek urlopu" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOut">Data końca urlopu</label>
+                        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker" data-target="#datetimepicker1"
+                                   id="requestDateOut" placeholder="Koniec urlopu" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="requestLeaveDays">Ilość dni urlopu</label>
+                        <input type="text" class="form-control" id="requestLeaveDays" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="leaveDays">Adresat</label>
+                        <input type="text" class="form-control"
+                               value="Tomasz Nowak (Kierownik działu produkcji)" readonly />
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Anuluj">
+                        <input type="submit" class="btn btn-info" id="submitRequestLeave" value="Wyślij">
                     </div>
                 </div>
             </div>
@@ -60,17 +158,261 @@
 
 
 
+
+
+
+    <!-- OccasionalLeaveModal -->
+    <div class="modal fade" id="occasionalLeaveModal" tabindex="-1" role="dialog" aria-labelledby="occasionalLeaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="occasionalLeaveModalLabel">Wniosek o urlop okolicznościowy</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="occasionalLeaveForm">
+                        <div class="mb-3">
+                            <label for="occasionalLeaveStartDate" class="form-label">Data rozpoczęcia urlopu</label>
+                            <div class="input-group date" id="occasionalLeaveStartDatePicker" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker" data-target="#occasionalLeaveStartDatePicker" id="occasionalLeaveStartDate" name="startDate" placeholder="Wybierz datę rozpoczęcia" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="occasionalLeaveEndDate" class="form-label">Data zakończenia urlopu</label>
+                            <div class="input-group date" id="occasionalLeaveEndDatePicker" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker" data-target="#occasionalLeaveEndDatePicker" id="occasionalLeaveEndDate" name="endDate" placeholder="Wybierz datę zakończenia" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="occasionalLeaveDays" class="form-label">Liczba dni urlopu</label>
+                            <input type="text" class="form-control" id="occasionalLeaveDays" name="leaveDays" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="occasionalLeaveReason" class="form-label">Powód urlopu</label>
+                            <textarea class="form-control" id="occasionalLeaveReason" name="reason"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                    <button type="button" class="btn btn-primary" id="submitOccasionalLeave">Wyślij wniosek</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ParentalLeaveModal -->
+    <div class="modal fade" id="parentalLeaveModal" tabindex="-1" role="dialog" aria-labelledby="parentalLeaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="parentalLeaveModalLabel">Zgłoszenie urlopu rodzicielskiego</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="parentalLeaveForm">
+                        <div class="mb-3">
+                            <label for="parentalLeaveStartDate" class="form-label">Data rozpoczęcia urlopu</label>
+                            <div class="input-group date" id="parentalLeaveStartDatePicker" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker" data-target="#parentalLeaveStartDatePicker" id="parentalLeaveStartDate" name="startDate" placeholder="Wybierz datę rozpoczęcia" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="parentalLeaveEndDate" class="form-label">Data zakończenia urlopu</label>
+                            <div class="input-group date" id="parentalLeaveEndDatePicker" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker" data-target="#parentalLeaveEndDatePicker" id="parentalLeaveEndDate" name="endDate" placeholder="Wybierz datę zakończenia" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="parentalLeaveDays" class="form-label">Liczba dni urlopu</label>
+                            <input type="text" class="form-control" id="parentalLeaveDays" name="leaveDays" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="childName" class="form-label">Imię dziecka</label>
+                            <input type="text" class="form-control" id="childName" name="childName">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                    <button type="button" class="btn btn-primary" id="submitParentalLeave">Zgłoś urlop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Sukces!</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Wysłano wniosek urlopowy.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
-<!--Main layout-->
-
-
-
 </body>
+
+<script>
+    $(document).ready(function () {
+        // Inicjalizuj bootstrap-datepicker dla wszystkich modalów
+        $('#dateIn, #dateOut, #requestDateIn, #requestDateOut, #parentalLeaveStartDate, #parentalLeaveEndDate, #occasionalLeaveStartDate, #occasionalLeaveEndDate').datepicker({
+            format: 'yyyy-mm-dd',
+            daysOfWeekDisabled: '0,6',
+            autoclose: true,
+            weekStart: 1,
+            language: 'pl'
+        });
+
+        // Obliczanie dni urlopu dla modalu "Dodaj urlop wypoczynkowy"
+        $('#dateIn, #dateOut').on('change', function () {
+            var dateIn = new Date($('#dateIn').val());
+            var dateOut = new Date($('#dateOut').val());
+
+            if (dateIn && dateOut && dateOut >= dateIn) {
+                var totalDays = calculateWorkingDays(dateIn, dateOut);
+                $('#leaveDays').val(totalDays);
+            }
+        });
+
+        // Obliczanie dni urlopu dla modalu "Zgłoś urlop na żądanie"
+        $('#requestDateIn, #requestDateOut').on('change', function () {
+            var requestDateIn = new Date($('#requestDateIn').val());
+            var requestDateOut = new Date($('#requestDateOut').val());
+
+            if (requestDateIn && requestDateOut && requestDateOut >= requestDateIn) {
+                var requestLeaveDays = calculateWorkingDays(requestDateIn, requestDateOut);
+                $('#requestLeaveDays').val(requestLeaveDays);
+            }
+        });
+
+        // Obliczanie dni urlopu dla modalu "Zgłoszenie urlopu rodzicielskiego"
+        $('#parentalLeaveStartDate, #parentalLeaveEndDate').on('change', function () {
+            var parentalLeaveStartDate = new Date($('#parentalLeaveStartDate').val());
+            var parentalLeaveEndDate = new Date($('#parentalLeaveEndDate').val());
+
+            if (parentalLeaveStartDate && parentalLeaveEndDate && parentalLeaveEndDate >= parentalLeaveStartDate) {
+                var parentalLeaveDays = calculateWorkingDays(parentalLeaveStartDate, parentalLeaveEndDate);
+                $('#parentalLeaveDays').val(parentalLeaveDays);
+            }
+        });
+
+        // Obliczanie dni urlopu dla modalu "Wniosek o urlop okolicznościowy"
+        $('#occasionalLeaveStartDate, #occasionalLeaveEndDate').on('change', function () {
+            var occasionalLeaveStartDate = new Date($('#occasionalLeaveStartDate').val());
+            var occasionalLeaveEndDate = new Date($('#occasionalLeaveEndDate').val());
+
+            if (occasionalLeaveStartDate && occasionalLeaveEndDate && occasionalLeaveEndDate >= occasionalLeaveStartDate) {
+                var occasionalLeaveDays = calculateWorkingDays(occasionalLeaveStartDate, occasionalLeaveEndDate);
+                $('#occasionalLeaveDays').val(occasionalLeaveDays);
+            }
+        });
+
+        function calculateWorkingDays(startDate, endDate) {
+            var totalDays = 0;
+            var currentDate = new Date(startDate);
+
+            while (currentDate <= endDate) {
+                var dayOfWeek = currentDate.getDay();
+                if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                    totalDays++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            return totalDays;
+        }
+
+        // Zapis urlopu dla modalu "Dodaj urlop wypoczynkowy"
+        $('#submitLeave').on('click', function () {
+            var selectedLeaveDays = parseInt($('#leaveDays').val());
+            var availableLeaveDays = parseInt($('#availableLeaveDays').text());
+
+            if (selectedLeaveDays <= availableLeaveDays) {
+                // Wykonaj żądanie zapisu urlopu
+                // ...
+                // Po zapisie, wyczyszczenie pól formularza
+                $('#leaveModalBody input[type="text"]').val('');
+                $('#successModal').modal('show');
+                $('#leaveModal').modal('hide');
+            } else {
+                // Wyświetl komunikat o błędzie
+                alert('Wybrana liczba dni urlopu przekracza dostępne dni urlopowe.');
+            }
+        });
+
+        // Zapis urlopu dla modalu "Zgłoś urlop na żądanie"
+        $('#submitRequestLeave').on('click', function () {
+            var selectedLeaveDays = parseInt($('#requestLeaveDays').val());
+            var availableLeaveDays = parseInt($('#availableRequestDays').text());
+
+            if (selectedLeaveDays <= availableLeaveDays) {
+                // Wykonaj żądanie zapisu urlopu
+                // ...
+                // Po zapisie, wyczyszczenie pól formularza
+                $('#requestLeaveModalBody input[type="text"]').val('');
+                $('#successModal').modal('show');
+                $('#requestLeaveModal').modal('hide');
+            } else {
+                // Wyświetl komunikat o błędzie
+                alert('Wybrana liczba dni urlopu przekracza dostępne dni urlopowe.');
+            }
+        });
+
+        // Zapis urlopu dla modalu "Zgłoszenie urlopu rodzicielskiego"
+        $('#submitParentalLeave').on('click', function () {
+            var selectedLeaveDays = parseInt($('#parentalLeaveDays').val());
+            var availableLeaveDays = parseInt($('#availableParentalLeaveDays').text());
+
+            if (selectedLeaveDays <= availableLeaveDays) {
+                // Wykonaj żądanie zapisu urlopu rodzicielskiego
+                // ...
+                // Po zapisie, wyczyszczenie pól formularza
+                $('#parentalLeaveForm input[type="text"]').val('');
+                $('#successModal').modal('show');
+                $('#parentalLeaveModal').modal('hide');
+            } else {
+                // Wyświetl komunikat o błędzie
+                alert('Wybrana liczba dni urlopu przekracza dostępne dni urlopowe.');
+            }
+        });
+
+        // Zapis urlopu dla modalu "Wniosek o urlop okolicznościowy"
+        $('#submitOccasionalLeave').on('click', function () {
+            var selectedLeaveDays = parseInt($('#occasionalLeaveDays').val());
+            var availableLeaveDays = parseInt($('#availableOccasionalLeaveDays').text());
+
+            if (selectedLeaveDays <= availableLeaveDays) {
+                // Wykonaj żądanie zapisu urlopu okolicznościowego
+                // ...
+                // Po zapisie, wyczyszczenie pól formularza
+                $('#occasionalLeaveForm input[type="text"], #occasionalLeaveForm textarea').val('');
+                $('#successModal').modal('show');
+                $('#occasionalLeaveModal').modal('hide');
+            } else {
+                // Wyświetl komunikat o błędzie
+                alert('Wybrana liczba dni urlopu przekracza dostępne dni urlopowe.');
+            }
+        });
+    });
+</script>
+
+
+
 </html>
-
-
-
-
-
-
-<

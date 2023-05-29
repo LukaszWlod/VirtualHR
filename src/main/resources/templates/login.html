@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Logowanie</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 100px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-login {
+      width: 50%;
+      font-size: 24px;
+      padding: 20px;
+    }
+  </style>
+  <div th:replace="fragments/header :: header" th:remove="tag"></div>
+</head>
+<body>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4">Logowanie</h2>
+      <form th:action="@{/authenticate}" method="post">
+        <div class="form-group">
+          <label for="username">Nazwa użytkownika:</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Hasło:</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-login">Zaloguj</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

@@ -35,9 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated() // Wymaga uwierzytelnienia dla pozostałych endpointów
                 .and()
                 .formLogin() // Formularz logowania
-              // .loginPage("/login") // Strona logowania
-                .permitAll()
-                .and().formLogin();
+                    .loginPage("/login") // Strona logowania
+                    .loginProcessingUrl("/authenticate")
+                    .permitAll()
+                    .and().formLogin();
 //                .logout() // Wylogowanie
 //                .permitAll();
     }

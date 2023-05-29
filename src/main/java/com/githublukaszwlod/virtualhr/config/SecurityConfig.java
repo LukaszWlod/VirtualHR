@@ -1,4 +1,4 @@
-package com.githublukaszwlod.virtualhr;
+package com.githublukaszwlod.virtualhr.config;
 
 ;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated() // Wymaga uwierzytelnienia dla pozostałych endpointów
                 .and()
                 .formLogin() // Formularz logowania
-               .loginPage("/login") // Strona logowania
+              // .loginPage("/login") // Strona logowania
                 .permitAll()
                 .and().formLogin();
 //                .logout() // Wylogowanie
@@ -46,11 +46,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder(){return NoOpPasswordEncoder.getInstance();
     }
 
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
+
 }

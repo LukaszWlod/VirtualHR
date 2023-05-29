@@ -31,16 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/public/**").permitAll() // Publiczne endpointy
-                .anyRequest().authenticated() // Wymaga uwierzytelnienia dla pozostałych endpointów
-                .and()
+                    .antMatchers("/public/**").permitAll() // Publiczne endpointy
+                    .anyRequest().authenticated() // Wymaga uwierzytelnienia dla pozostałych endpointów
+                    .and()
                 .formLogin() // Formularz logowania
                     .loginPage("/login") // Strona logowania
                     .loginProcessingUrl("/authenticate")
                     .permitAll()
-                    .and().formLogin();
-//                .logout() // Wylogowanie
-//                .permitAll();
+                    .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .permitAll();
     }
 
     @Bean

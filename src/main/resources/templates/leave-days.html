@@ -24,7 +24,7 @@
                 <div class="card mb-4" style="background-color: #f5f5f5;">
                     <div class="card-body">
                         <h5 class="card-title">Urlop wypoczynkowy</h5>
-                        <p class="card-text">Ilość dni do wykorzystania: <span id="availableDays" style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.annualLeaveDays}"></span></p>
+                        <p class="card-text">Ilość dni do wykorzystania: <span id="availableLeaveDays" style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.annualLeaveDays}"></span></p>
                         <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addLeaveModal">Dodaj wniosek o urlop wypoczynkowy</a>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="card mb-4" style="background-color: #f5f5f5;">
                     <div class="card-body">
                         <h5 class="card-title">Urlop okolicznościowy</h5>
-                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.occasionalLeaveDays}"></span></p>
+                        <p class="card-text">Ilość dni do wykorzystania: <span id="availableOccasionalLeaveDays" style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.occasionalLeaveDays}"></span></p>
                         <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#occasionalLeaveModal">Dodaj wniosek o urlop okolicznościowy</a>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="card mb-4" style="background-color: #f5f5f5;">
                     <div class="card-body">
                         <h5 class="card-title">Urlop rodzicielski</h5>
-                        <p class="card-text">Ilość dni do wykorzystania: <span style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.parentalLeaveDays}"></span></p>
+                        <p class="card-text">Ilość dni do wykorzystania: <span id ="availableParentalLeaveDays" style="font-weight: bold; font-size: 36px; color: darkgreen;" th:text="${leaveDays.parentalLeaveDays}"></span></p>
                         <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#parentalLeaveModal">Zgłoś urlop rodzicielski</a>
                     </div>
                 </div>
@@ -94,9 +94,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="leaveDays">Osoba zatwierdzająca urlop</label>
-                        <input type="text" class="form-control" id="person"
-                               value="Tomasz Nowak (Kierownik działu produkcji)" readonly />
+                        <label for="person">Osoba zatwierdzająca urlop:</label>
+
+                            <input id="person" type="text" class="form-control"
+                                   value="Tomasz Nowak (Kierownik działu produkcji)" readonly />
+
                     </div>
 
                     <div class="modal-footer">
@@ -141,9 +143,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="leaveDays">Adresat</label>
-                        <input type="text" class="form-control"
-                               value="Tomasz Nowak (Kierownik działu produkcji)" readonly />
+                        <label for="person2">Adresat</label>
+
+                            <input id="person2" type="text" class="form-control"
+                                   value="Tomasz Nowak (Kierownik działu produkcji)" readonly />
+
                     </div>
 
                     <div class="modal-footer">
@@ -260,7 +264,7 @@
                     Wysłano wniosek urlopowy.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                    <button id="btnOK" type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
@@ -271,7 +275,7 @@
 
 <script>
     $(document).ready(function () {
-        // Inicjalizuj bootstrap-datepicker dla wszystkich modalów
+        //  bootstrap-datepicker dla wszystkich modalów
         $('#dateIn, #dateOut, #requestDateIn, #requestDateOut, #parentalLeaveStartDate, #parentalLeaveEndDate, #occasionalLeaveStartDate, #occasionalLeaveEndDate').datepicker({
             format: 'yyyy-mm-dd',
             daysOfWeekDisabled: '0,6',
@@ -344,6 +348,9 @@
             var selectedLeaveDays = parseInt($('#leaveDays').val());
             var availableLeaveDays = parseInt($('#availableLeaveDays').text());
 
+
+
+
             if (selectedLeaveDays <= availableLeaveDays) {
                 // Wykonaj żądanie zapisu urlopu
                 // ...
@@ -357,18 +364,42 @@
             }
         });
 
-        // Zapis urlopu dla modalu "Zgłoś urlop na żądanie"
+
+
+       // Zapis urlopu dla modalu "Zgłoś urlop na żądanie"
         $('#submitRequestLeave').on('click', function () {
             var selectedLeaveDays = parseInt($('#requestLeaveDays').val());
             var availableLeaveDays = parseInt($('#availableRequestDays').text());
 
             if (selectedLeaveDays <= availableLeaveDays) {
-                // Wykonaj żądanie zapisu urlopu
-                // ...
-                // Po zapisie, wyczyszczenie pól formularza
-                $('#requestLeaveModalBody input[type="text"]').val('');
-                $('#successModal').modal('show');
-                $('#requestLeaveModal').modal('hide');
+                // Przygotowanie danych formularza do przesłania
+                var requestData = {
+                    dateIn: $('#requestDateIn').val(),
+                    dateOut: $('#requestDateOut').val(),
+                    leaveDays: $('#requestLeaveDays').val(),
+                    recipient: $('#person').val()
+                };
+                console.log(requestData);
+
+                // Wykonanie żądania POST do kontrolera
+                $.ajax({
+                    url: '/public/save',
+                    type: 'POST',
+                    data: JSON.stringify(requestData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        // Po udanym zapisie, wyczyszczenie pól formularza
+                        $('#requestLeaveModalBody input[type="text"]').val('');
+                        $('#successModal').modal('show');
+                        $('#requestLeaveModal').modal('hide');
+                       // location.reload();
+                    },
+                    error: function (error) {
+                        // Obsługa błędu
+                        console.error('Błąd przy zapisie urlopu:', error);
+                        alert('Wystąpił błąd podczas zapisywania urlopu.');
+                    }
+                });
             } else {
                 // Wyświetl komunikat o błędzie
                 alert('Wybrana liczba dni urlopu przekracza dostępne dni urlopowe.');
@@ -410,6 +441,10 @@
                 alert('Wybrana liczba dni urlopu przekracza dostępne dni urlopowe.');
             }
         });
+    });
+
+    $(document).on('click', '#btnOK', function() {
+        location.reload();
     });
 </script>
 

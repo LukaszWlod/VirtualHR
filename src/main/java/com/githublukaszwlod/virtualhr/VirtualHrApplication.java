@@ -1,6 +1,7 @@
 package com.githublukaszwlod.virtualhr;
 
 import com.githublukaszwlod.virtualhr.model.Employee;
+import com.githublukaszwlod.virtualhr.model.LeaveData;
 import com.githublukaszwlod.virtualhr.model.LeaveDays;
 import com.githublukaszwlod.virtualhr.model.Salary;
 import com.githublukaszwlod.virtualhr.service.*;
@@ -35,7 +36,7 @@ public class VirtualHrApplication {
                     1l, "Jan", "Kowalski", "99001102031",
                     "jan@wp.pl", "Kwiatowa", 1,
                     "22-222",LocalDate.of(2020, 1, 8), 777666111,
-                    "Lublin",new ArrayList<Salary>(),new LeaveDays()
+                    "Lublin",new ArrayList<Salary>(),new LeaveDays(),new ArrayList<LeaveData>()
             ));
 
             salaryService.safeSalary(new Salary(1l,employeeService.getOne(1l), "2023-01", 160.0, 300.0, 200.0, 100.0, 5000.0,

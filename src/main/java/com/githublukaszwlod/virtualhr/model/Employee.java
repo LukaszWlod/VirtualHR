@@ -37,5 +37,10 @@ import java.util.List;
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private LeaveDays employeeLeaveDays;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<LeaveData> leaveDataList;
+
+
+
     }
 

@@ -39,7 +39,7 @@ public class EmployeeController {
 
     @PostMapping
     public String addEmployee (@ModelAttribute("employee") Employee employee){
-        employeeService.safeEmployee(employee);
+        employeeService.saveEmployee(employee);
 
         System.out.println("Zapis do bazy: " + employee.toString() );
         return "redirect:/employees";

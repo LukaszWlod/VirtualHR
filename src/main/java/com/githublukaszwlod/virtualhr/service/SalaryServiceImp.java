@@ -25,7 +25,7 @@ public class SalaryServiceImp implements  SalaryService {
     }
 
     @Override
-    public void safeSalary(Salary salary) {
+    public void save(Salary salary) {
         salaryRepository.save(salary);
     }
 

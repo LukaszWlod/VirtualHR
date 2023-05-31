@@ -23,7 +23,7 @@ public class LeaveDaysServiceImp implements LeaveDaysService {
     }
 
     @Override
-    public void safe(LeaveDays leaveDays) {
+    public void save(LeaveDays leaveDays) {
         leaveDaysRepository.save(leaveDays);
     }
 

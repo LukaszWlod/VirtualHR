@@ -1,4 +1,4 @@
-package com.githublukaszwlod.virtualhr;
+package com.githublukaszwlod.virtualhr.config;
 
 import com.githublukaszwlod.virtualhr.model.Employee;
 import org.springframework.security.core.GrantedAuthority;

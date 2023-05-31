@@ -9,7 +9,7 @@ import java.util.List;
 public interface SalaryService {
 
     List<Salary> getAllSalariesByEmployeeId(Long employeeId);
-    void safeSalary(Salary salary);
+    void save(Salary salary);
     void update(Salary salary);
     Salary getSalaryById(Long id);
 }

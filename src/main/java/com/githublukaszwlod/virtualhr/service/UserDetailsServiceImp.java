@@ -1,6 +1,6 @@
 package com.githublukaszwlod.virtualhr.service;
 
-import com.githublukaszwlod.virtualhr.UserDetailsImp;
+import com.githublukaszwlod.virtualhr.config.UserDetailsImp;
 import com.githublukaszwlod.virtualhr.model.Employee;
 import com.githublukaszwlod.virtualhr.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;

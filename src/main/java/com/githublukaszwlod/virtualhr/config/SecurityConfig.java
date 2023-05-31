@@ -33,12 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/public/**").permitAll() // Publiczne endpointy
-                    .anyRequest().authenticated() // Wymaga uwierzytelnienia dla pozostałych endpointów
+                    .antMatchers("/public/**").permitAll()
+                    .anyRequest().authenticated()
                     .and()
-                .formLogin() // Formularz logowania
-                    .loginPage("/login") // Strona logowania
+                .formLogin()
+                    .loginPage("/login")
                     .loginProcessingUrl("/authenticate")
+                    .defaultSuccessUrl("/notice", true)
                     .permitAll()
                     .and()
                 .logout()

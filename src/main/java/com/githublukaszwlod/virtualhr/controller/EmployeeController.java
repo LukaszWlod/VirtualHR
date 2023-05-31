@@ -41,7 +41,6 @@ public class EmployeeController {
     public String addEmployee (@ModelAttribute("employee") Employee employee){
         employeeService.saveEmployee(employee);
 
-        System.out.println("Zapis do bazy: " + employee.toString() );
         return "redirect:/employees";
     }
 
@@ -60,7 +59,6 @@ public class EmployeeController {
     @RequestMapping(value="/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
     public String delete(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
-        System.out.println("usuwanie " + id);
         return "redirect:/employees";
     }
 

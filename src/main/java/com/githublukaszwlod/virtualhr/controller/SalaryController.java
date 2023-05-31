@@ -2,6 +2,7 @@ package com.githublukaszwlod.virtualhr.controller;
 
 import com.githublukaszwlod.virtualhr.model.Employee;
 import com.githublukaszwlod.virtualhr.model.Salary;
+import com.githublukaszwlod.virtualhr.service.CurrentUserService;
 import com.githublukaszwlod.virtualhr.service.EmployeeService;
 import com.githublukaszwlod.virtualhr.service.PdfService;
 import com.githublukaszwlod.virtualhr.service.SalaryService;
@@ -19,23 +20,26 @@ import java.util.List;
 @Controller
 public class SalaryController {
 
-    EmployeeService employeeService;
-    SalaryService salaryService;
-    PdfService pdfService;
+   private final EmployeeService employeeService;
+   private final SalaryService salaryService;
+   private final  PdfService pdfService;
+   private final  CurrentUserService currentUserService ;
 
 
-    @Autowired
-    public SalaryController(EmployeeService employeeService, SalaryService salaryService, PdfService pdfService) {
+    public SalaryController(EmployeeService employeeService, SalaryService salaryService, PdfService pdfService, CurrentUserService currentUserService) {
         this.employeeService = employeeService;
         this.salaryService = salaryService;
         this.pdfService = pdfService;
+        this.currentUserService = currentUserService;
     }
 
-    @GetMapping("/salary/{id}")
-    public String showPersonalData(@PathVariable Long id, Model model) {
+    @GetMapping("/salary")
+    public String showPersonalData( Model model) {
 
-        Employee employee = employeeService.getOne(id);
-        List<Salary> salaries = salaryService.getAllSalariesByEmployeeId(id);
+
+
+        Employee employee = employeeService.getOne(currentUserService.getCurrentUserId());
+        List<Salary> salaries = salaryService.getAllSalariesByEmployeeId(currentUserService.getCurrentUserId());
 
         model.addAttribute("user", employee);
         model.addAttribute("salaries", salaries);

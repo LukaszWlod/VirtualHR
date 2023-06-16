@@ -35,7 +35,6 @@ public class LeaveController {
         this.currentUserService = currentUserService;
         this.leaveDataService = leaveDataService;
 
-
     }
 
 
@@ -43,9 +42,8 @@ public class LeaveController {
 
     @GetMapping("leave")
     public String showLeaveDays(Model model) {
+
         LeaveDays leaveDays = leaveDaysService.getByEmployeeId(currentUserService.getCurrentUserId()) ;
-
-
         model.addAttribute("leaveDays", leaveDays);
 
         return "leave-days";

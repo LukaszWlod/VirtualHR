@@ -23,6 +23,11 @@ public class NoticeServiceImp implements NoticeService {
     }
 
     @Override
+    public List<Notice> getAllNotices() {
+        return   repository.findAll();
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
 
@@ -33,8 +38,5 @@ public class NoticeServiceImp implements NoticeService {
         repository.save(notice);
     }
 
-    @Override
-    public List<Notice> getAllNotices() {
-     return   repository.findAll();
-    }
+
 }

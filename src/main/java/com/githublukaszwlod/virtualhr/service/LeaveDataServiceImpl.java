@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LeaveDataServiceImp implements LeaveDataService {
+public class LeaveDataServiceImpl implements LeaveDataService {
     LeaveDataRepository repository;
 
     @Autowired
-    public LeaveDataServiceImp(LeaveDataRepository repository) {
+    public LeaveDataServiceImpl(LeaveDataRepository repository) {
         this.repository = repository;
     }
 

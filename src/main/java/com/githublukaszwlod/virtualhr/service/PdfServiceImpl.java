@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.io.OutputStream;
 
 @Service
-public class PdfServiceImp  implements PdfService{
+public class PdfServiceImpl implements PdfService{
     @Override
     public void generatePersonalDataPdf(Employee employee, OutputStream outputStream) throws DocumentException {
         Document document = new Document();
@@ -116,13 +116,8 @@ public class PdfServiceImp  implements PdfService{
         valueCell.setVerticalAlignment(Element.ALIGN_BOTTOM);
         valueCell.setBorder(Rectangle.NO_BORDER);
         valueCell.setPaddingRight(1);
-
-
         valueCell.setPaddingTop(25);
         table.addCell(valueCell);
-
-
-
     }
 
 

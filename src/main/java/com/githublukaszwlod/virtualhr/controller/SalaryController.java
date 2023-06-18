@@ -19,13 +19,12 @@ import java.util.List;
 
 @Controller
 public class SalaryController {
-
    private final EmployeeService employeeService;
    private final SalaryService salaryService;
    private final  PdfService pdfService;
    private final  CurrentUserService currentUserService ;
 
-
+   @Autowired
     public SalaryController(EmployeeService employeeService, SalaryService salaryService, PdfService pdfService, CurrentUserService currentUserService) {
         this.employeeService = employeeService;
         this.salaryService = salaryService;
@@ -35,18 +34,13 @@ public class SalaryController {
 
     @GetMapping("/salary")
     public String showPersonalData( Model model) {
-
-
-
         Employee employee = employeeService.getOne(currentUserService.getCurrentUserId());
         List<Salary> salaries = salaryService.getAllSalariesByEmployeeId(currentUserService.getCurrentUserId());
-
         model.addAttribute("user", employee);
         model.addAttribute("salaries", salaries);
 
         return "salary";
     }
-
 
     @GetMapping("/salary/pdf/{id}")
     public void generatePdf(@PathVariable Long id, HttpServletResponse response) throws IOException, DocumentException {

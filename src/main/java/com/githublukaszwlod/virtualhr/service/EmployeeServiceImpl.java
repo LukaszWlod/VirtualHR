@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmployeeServiceImp implements  EmployeeService{
+public class EmployeeServiceImpl implements  EmployeeService{
     private EmployeeRepository employeeRepository;
 
-    public EmployeeServiceImp(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 

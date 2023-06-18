@@ -2,7 +2,6 @@ package com.githublukaszwlod.virtualhr;
 
 import com.githublukaszwlod.virtualhr.model.*;
 import com.githublukaszwlod.virtualhr.service.*;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,7 +27,7 @@ public class VirtualHrApplication {
 
 
     @Bean
-    public CommandLineRunner demo(NoticeService noticeService, EmployeeServiceImp employeeService, SalaryServiceImp salaryService, LeaveDaysServiceImp leaveService) {
+    public CommandLineRunner demo(NoticeService noticeService, EmployeeServiceImpl employeeService, SalaryServiceImpl salaryService, LeaveDaysServiceImpl leaveService) {
         return (args) -> {
             employeeService.saveEmployee(new Employee(
                     1l, "Jan", "Kowalski", "99001102031",

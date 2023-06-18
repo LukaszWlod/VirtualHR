@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LeaveDaysServiceImp implements LeaveDaysService {
+public class LeaveDaysServiceImpl implements LeaveDaysService {
 
 
 
     LeaveDaysRepository leaveDaysRepository;
 
     @Autowired
-    public LeaveDaysServiceImp(LeaveDaysRepository leaveDaysRepository) {
+    public LeaveDaysServiceImpl(LeaveDaysRepository leaveDaysRepository) {
         this.leaveDaysRepository = leaveDaysRepository;
     }
 

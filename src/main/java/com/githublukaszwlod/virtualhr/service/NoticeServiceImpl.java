@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NoticeServiceImp implements NoticeService {
+public class NoticeServiceImpl implements NoticeService {
     private final NoticeRepository repository;
 
     @Autowired
-    public NoticeServiceImp(NoticeRepository repository) {
+    public NoticeServiceImpl(NoticeRepository repository) {
         this.repository = repository;
     }
 
